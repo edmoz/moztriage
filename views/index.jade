@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  header.page-header
+    h1 Repos
+
+  ul
+    each repo in repos
+      li
+        a(href="/triage/#{repo.str}") #{repo.str}

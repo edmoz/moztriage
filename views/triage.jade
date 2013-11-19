@@ -1,0 +1,52 @@
+extends layout
+
+block content
+  header.page-header
+    h1
+      a(href=data.uri)
+        small.text-muted: em #{data.org} / 
+        span= data.repo
+      | &nbsp;
+      small.badge= data.issues.length
+
+
+  table.table.table-condensed.table-hover
+    thead
+      tr
+        th #
+        th Title
+        th Since
+        th &nbsp;
+
+    tbody
+      each issue in data.issues
+        tr
+          td
+            - var type = issue.type.toUpperCase()
+            case type
+              when "PULL"
+                - var cls = "btn-success"
+                - var ico = "glyphicon glyphicon-heart red"
+              when "ISSUES"
+                - var cls = "btn-default"
+                - var ico = "glyphicon glyphicon-heart-empty red"
+            a.btn.btn-xs(href=issue.html_url, target="_blank", class=cls)
+              span(class=ico)
+              | &nbsp;##{issue.number} #{type}
+          td
+            a(href=issue.html_url)= issue.title
+            | &nbsp;
+            span.label.label-default= issue.user.name
+          td.text-muted= issue.fromNow
+          td
+            if issue.assignee && issue.assignee.avatar_url
+              img.img-rounded(src=issue.assignee.avatar_url, width=16, height=16, title=issue.assignee.login, data-toggle='tooltip')
+            else
+              | &nbsp;
+
+
+  footer.well
+    div.text-center
+      small: em.text-muted Last sync:&nbsp;
+        a(href="/cache/#{data.org}/#{data.repo}")= new Date(data.now).toLocaleString()
+        span &nbsp; (#{data.lastSync})

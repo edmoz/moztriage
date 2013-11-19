@@ -1,0 +1,31 @@
+{
+  "author": "Peter deHaan (http://nodeexamples.com/)",
+  "name": "moz-triage",
+  "version": "0.1.0",
+  "description": "Scrapes unassigned bugs for the specified repo.",
+  "main": "app.js",
+  "dependencies": {
+    "express": "~3.4.4",
+    "jade": "~0.35.0",
+    "mkdirp": "~0.3.5",
+    "moment": "~2.4.0",
+    "promise": "~3.2.0",
+    "shelljs": "~0.2.6"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": "0.10.x",
+    "npm": "1.3.x"
+  },
+  "license": "WTFPL",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:pdehaan/moztriage.git"
+  },
+  "bugs": "https://github.com:pdehaan/moztriage/issues",
+  "homepage": "https://github.com:pdehaan/moztriage",
+  "scripts": {
+    "start": "node app",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  header.page-header
+    h1 Unknown repo
+
+  p.lead No cache file found for: 
+    code= str
+  p: a.btn.btn-success(href="/cache/#{str}") Add #{str}
